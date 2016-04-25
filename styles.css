@@ -25,3 +25,8 @@ body, a:link, a:visited, a:active{
   border-radius:10px;
   position:absolute;
 }
+.blinky-dancer{
+  border:20px solid blue;
+  border-radius:20px;
+  position:absolute;
+}
