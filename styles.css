@@ -25,8 +25,18 @@ body, a:link, a:visited, a:active{
   border-radius:10px;
   position:absolute;
 }
-.blinky-dancer{
+.blinkydancer{
   border:20px solid blue;
+  border-radius:20px;
+  position:absolute;
+}
+.blinkydancer:hover{
+/*  background-image: url('./img/shanehubbell.jpeg');*/
+  border:50px solid green;
+  border-radius:50px;
+}
+.sidewaysdancer { 
+  border:40px solid yellow;
   border-radius:20px;
   position:absolute;
 }

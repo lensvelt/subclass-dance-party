@@ -27,7 +27,7 @@ $(document).ready(function() {
       $('body').width() * Math.random(),
       Math.random() * 1000
     );
-    // dancer.$node.addClass(dancerMakerFunctionName.toLowerCase();
+    dancer.$node.removeClass('dancer').addClass(dancerMakerFunctionName.toLowerCase());
     console.log(dancer.$node);
     $('body').append(dancer.$node);
   });
