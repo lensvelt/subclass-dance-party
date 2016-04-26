@@ -41,6 +41,10 @@ body, a:link, a:visited, a:active{
   position:absolute;
 }
 .randomdancer { 
-  border:50px solid pink;
+  /*border:50px solid pink;*/
+  width: 50px;
+  height: 50px;
+  background-size: 100% auto;
   position:absolute;
+  background-image: url("Toucan.png");
 }

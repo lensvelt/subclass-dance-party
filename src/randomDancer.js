@@ -10,8 +10,8 @@ RandomDancer.constructor = RandomDancer;
 
 RandomDancer.prototype.moveRandomly = function (timeBetweenSteps) {
   
-  this.top = Math.random() * $('body').height();
-  this.left = Math.random() * $('body').width();
+  // this.top = Math.random() * $('body').height();
+  // this.left = Math.random() * $('body').width();
   setTimeout(this.moveRandomly.bind(this, 500), 500);
   this.$node.animate({left: this.left, top: this.top});
 };

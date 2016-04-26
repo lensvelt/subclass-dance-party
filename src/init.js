@@ -34,10 +34,12 @@ $(document).ready(function() {
   });
 
   $('.lineUp').on('click', function(event) {
+    var dancerSpacing = $('body').width() / window.dancers.length;
     for (var i = 0; i < window.dancers.length; i++) {
-      window.dancers[i].$node.left = i * 10 + 20;
-      window.dancers[i].$node.top = 300;
-      window.dancers[i].$node.animate({top: window.dancers[i].$node.top, left: window.dancers[i].$node.left});
+      window.dancers[i].lineUp(300, dancerSpacing * i);
+      // window.dancers[i].$node.left = i * 10 + 20;
+      // window.dancers[i].$node.top = 300;
+      // window.dancers[i].$node.animate({top: window.dancers[i].$node.top, left: window.dancers[i].$node.left});
       // window.dancers[i].$node.(300, 300, 1000000000000);
     }
 
