@@ -4,27 +4,31 @@ var Dancer = function(top, left, timeBetweenSteps) {
   // var dancer = {};
 
   // use jQuery to create an HTML <span> tag
-  this.$node = $('<div class="dancer"></div>');
-  this.top = 0;
-  this.left = 0;
-  this.timeBetweenSteps = 0;
-  this.step(timeBetweenSteps);
-  this.setPosition(top, left);
+  this.$node = $('<div class="dancer animate.hinge"></div>');
+  this.top = top;
+  this.left = left;
+  this.timeBetweenSteps = timeBetweenSteps;
+  this.step();
+  this.setPosition();
+  this.canMove = true;
 
   // now that we have defined the dancer object, we can start setting up important parts of it by calling the methods we wrote
   // this one sets the position to some random default point within the body
   // this.setPosition(top, left);
 };
 
-Dancer.prototype.step = function(timeBetweenSteps) {
+Dancer.prototype.step = function() {
   // the basic dancer doesn't do anything interesting at all on each step,
   // it just schedules the next step
-  setTimeout(this.step.bind(this, timeBetweenSteps), timeBetweenSteps);
+  setTimeout(this.step.bind(this), this.timeBetweenSteps);
 };
 
 Dancer.prototype.lineUp = function (top, left) {
+
   this.top = top;
   this.left = left;
+  
+  this.canMove = false;
   var styleSettings = {
     top: this.top,
     left: this.left
@@ -32,12 +36,10 @@ Dancer.prototype.lineUp = function (top, left) {
   this.$node.animate(styleSettings);
 };
 
-Dancer.prototype.setPosition = function(top, left) {
+Dancer.prototype.setPosition = function() {
   // Use css top and left properties to position our <span> tag
   // where it belongs on the page. See http://api.jquery.com/css/
   //
-  this.top = top;
-  this.left = left;
   var styleSettings = {
     top: this.top,
     left: this.left
