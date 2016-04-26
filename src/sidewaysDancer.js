@@ -1,6 +1,7 @@
 var SidewaysDancer = function(top, left, timeBetweenSteps) {
 
   Dancer.apply(this, arguments);
+  this.moveRight = true;
   this.moveRightAndLeft();
 };
 
@@ -9,23 +10,23 @@ SidewaysDancer.prototype.constructor = SidewaysDancer;
 
 SidewaysDancer.prototype.moveRightAndLeft = function () {
   var maxWidth = $('body').width();
-  var travelDirection = 'right';
 
-  if (this.left <= 0) {
-    travelDirection = 'right';
-  } else if (this.left >= maxWidth) {
-    travelDirection = 'left';
-  }
+
 
   if (this.canMove) {
-    while (travelDirection === 'left' && this.left > 0) {
-      this.left -= 10;
-    } 
-    while (travelDirection === 'right' && this.left < maxWidth) {
-      this.left += 10;
+    console.log(this);
+    if (this.left <= 0) {
+      this.moveRight = true;
+    } else if (this.left >= maxWidth) {
+      this.moveRight = false;
     }
+    if (this.moveRight) {
+      this.left += 50;
+    } else {
+      this.left -= 50;
+    }
+    this.timeBetweenSteps = 200;
+    setTimeout(this.moveRightAndLeft.bind(this), this.timeBetweenSteps);
+    this.$node.animate({left: this.left});
   }
-  this.timeBetweenSteps = 300;
-  setTimeout(this.moveRightAndLeft.bind(this), this.timeBetweenSteps);
-  this.$node.animate({left: this.left});
 };
