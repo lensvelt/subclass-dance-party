@@ -3,6 +3,7 @@ var BlinkyDancer = function(top, left, timeBetweenSteps) {
   // so we must keep a copy of the old version of this function
 
   Dancer.apply(this, arguments);
+  this.opacityMeasure = Math.random(); 
 };
 
 BlinkyDancer.prototype = Object.create(Dancer.prototype);
@@ -16,11 +17,10 @@ BlinkyDancer.prototype.step = function(timeBetweenSteps) {
   // See http://api.jquery.com/category/effects/ for this and
   // other effects you can use on a jQuery-wrapped html tag.
   // this.$node.toggle();
-  var opacityMeasure = Math.random();
+
   var blinkyStyleSettings = {
-    opacity: opacityMeasure
+    opacity: this.opacityMeasure
   };
-  console.log('we toggled');
   this.$node.toggle();
   this.$node.css(blinkyStyleSettings);
 };

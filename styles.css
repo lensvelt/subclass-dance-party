@@ -40,3 +40,7 @@ body, a:link, a:visited, a:active{
   border-radius:20px;
   position:absolute;
 }
+.randomdancer { 
+  border:50px solid pink;
+  position:absolute;
+}

@@ -28,8 +28,20 @@ $(document).ready(function() {
       Math.random() * 1000
     );
     dancer.$node.removeClass('dancer').addClass(dancerMakerFunctionName.toLowerCase());
-    console.log(dancer.$node);
     $('body').append(dancer.$node);
+    window.dancers.push(dancer);
+    console.log(dancer);
   });
+
+  $('.lineUp').on('click', function(event) {
+    for (var i = 0; i < window.dancers.length; i++) {
+      window.dancers[i].$node.left = i * 10 + 20;
+      window.dancers[i].$node.top = 300;
+      window.dancers[i].$node.animate({top: window.dancers[i].$node.top, left: window.dancers[i].$node.left});
+      // window.dancers[i].$node.(300, 300, 1000000000000);
+    }
+
+  });
+
 });
 
