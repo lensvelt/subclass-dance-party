@@ -14,7 +14,6 @@ SidewaysDancer.prototype.moveRightAndLeft = function () {
 
 
   if (this.canMove) {
-    console.log(this);
     if (this.left <= 0) {
       this.moveRight = true;
     } else if (this.left >= maxWidth) {
@@ -25,7 +24,7 @@ SidewaysDancer.prototype.moveRightAndLeft = function () {
     } else {
       this.left -= 50;
     }
-    this.timeBetweenSteps = 200;
+    this.timeBetweenSteps = 1000;
     setTimeout(this.moveRightAndLeft.bind(this), this.timeBetweenSteps);
     this.$node.animate({left: this.left});
   }

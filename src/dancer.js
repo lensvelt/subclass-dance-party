@@ -4,7 +4,7 @@ var Dancer = function(top, left, timeBetweenSteps) {
   // var dancer = {};
 
   // use jQuery to create an HTML <span> tag
-  this.$node = $('<div class="dancer animate.hinge"></div>');
+  this.$node = $('<div class="dancer nuke"></div>');
   this.top = top;
   this.left = left;
   this.timeBetweenSteps = timeBetweenSteps;
@@ -27,13 +27,21 @@ Dancer.prototype.lineUp = function (top, left) {
 
   this.top = top;
   this.left = left;
-  
+
   this.canMove = false;
   var styleSettings = {
     top: this.top,
     left: this.left
   };
   this.$node.animate(styleSettings);
+};
+
+Dancer.prototype.destruct = function () {
+
+  this.canMove = false;
+  var direction = Math.floor(Math.random() * 4);
+  var exitDirection = [{left: +4000}, {left: -100}, {top: 4000}, {top: -100}];
+  this.$node.animate(exitDirection[direction], 1000);
 };
 
 Dancer.prototype.setPosition = function() {
