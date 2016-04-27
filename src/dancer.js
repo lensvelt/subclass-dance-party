@@ -10,6 +10,7 @@ var Dancer = function(top, left, timeBetweenSteps) {
   this.timeBetweenSteps = timeBetweenSteps;
   this.step();
   this.setPosition();
+  this.collide();
   this.canMove = true;
 
   // now that we have defined the dancer object, we can start setting up important parts of it by calling the methods we wrote
@@ -21,6 +22,23 @@ Dancer.prototype.step = function() {
   // the basic dancer doesn't do anything interesting at all on each step,
   // it just schedules the next step
   setTimeout(this.step.bind(this), this.timeBetweenSteps);
+};
+
+Dancer.prototype.collide = function () {
+  var diffLeft = 0;
+  var diffTop = 0;
+  var distance = 0;
+  
+  for (var i = 0; i < window.dancers.length; i++) {
+    diffLeft = Math.pow((this.left - window.dancers[i].left), 2);
+    diffTop = Math.pow((this.top - window.dancers[i].top), 2);
+    distance = Math.sqrt(diffTop + diffLeft);
+
+    if (distance < 30 && window.dancers[i] !== this) {
+      this.destruct();
+    }
+  }
+  setTimeout(this.collide.bind(this), 100);
 };
 
 Dancer.prototype.lineUp = function (top, left) {
