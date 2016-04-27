@@ -28,13 +28,14 @@ Dancer.prototype.collide = function () {
   var diffLeft = 0;
   var diffTop = 0;
   var distance = 0;
+  var dancers = window.dancers || [];
   
-  for (var i = 0; i < window.dancers.length; i++) {
-    diffLeft = Math.pow((this.left - window.dancers[i].left), 2);
-    diffTop = Math.pow((this.top - window.dancers[i].top), 2);
+  for (var i = 0; i < dancers.length; i++) {
+    diffLeft = Math.pow((this.left - dancers[i].left), 2);
+    diffTop = Math.pow((this.top - dancers[i].top), 2);
     distance = Math.sqrt(diffTop + diffLeft);
 
-    if (distance < 30 && window.dancers[i] !== this) {
+    if (distance < 30 && dancers[i] !== this) {
       this.destruct();
     }
   }
